@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block title %}SMS Notification - MediDiagnose{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="bi bi-bell me-2"></i>SMS Notification</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead mb-4">Receive your diagnosis results via SMS for easy reference and quick access.</p>
+                    
+                    {% if twilio_available %}
+                    <form action="/send-sms-notification" method="post">
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text">+</span>
+                                <input type="tel" class="form-control" id="phone_number" name="phone_number" 
+                                       placeholder="1XXXXXXXXXX (Country code + number)" required>
+                            </div>
+                            <div class="form-text">
+                                Enter your full phone number with country code (e.g., 1XXXXXXXXXX for US numbers).
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info mb-4">
+                            <div class="d-flex">
+                                <div class="me-3">
+                                    <i class="bi bi-info-circle-fill fs-3"></i>
+                                </div>
+                                <div>
+                                    <h5>You'll receive the following information:</h5>
+                                    <ul class="mb-0">
+                                        <li>Your predicted condition: <strong>{{ diagnosis.disease }}</strong></li>
+                                        <li>Risk level: <strong>{{ diagnosis.risk_level.upper() }}</strong></li>
+                                        <li>Basic recommendations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
+                            <label class="form-check-label" for="consent">
+                                I consent to receive SMS notifications about my diagnosis results. Standard message rates may apply.
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('diagnosis_result') }}" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left me-1"></i>Back to Results
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send me-1"></i>Send SMS
+                            </button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-warning">
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <i class="bi bi-exclamation-triangle-fill fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>SMS Notifications Unavailable</h5>
+                                <p>The SMS notification service is currently unavailable. Twilio API credentials are required to send SMS notifications.</p>
+                                <p class="mb-0">Please try again later or contact the administrator.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('diagnosis_result') }}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>Back to Results
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="alert alert-secondary mt-4">
+                <h5 class="alert-heading"><i class="bi bi-shield-lock me-2"></i>Privacy Notice</h5>
+                <p class="mb-0">Your phone number will only be used to send this one-time notification and will not be stored in our system or used for marketing purposes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

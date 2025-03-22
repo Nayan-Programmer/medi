@@ -1,0 +1,220 @@
+/* Main Custom Styles */
+:root {
+    --medical-blue: #3498db;
+    --medical-light-blue: #ebf5fb;
+    --medical-dark-blue: #2c3e50;
+    --medical-white: #f8f9fa;
+    --medical-gray: #e9ecef;
+    --medical-green: #2ecc71;
+    --medical-red: #e74c3c;
+    --medical-yellow: #f1c40f;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+}
+
+/* Header & Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--medical-blue);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to right, var(--medical-dark-blue), var(--medical-blue));
+    color: var(--medical-white);
+    padding: 3rem 0;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.hero-img {
+    max-width: 90%;
+    height: auto;
+}
+
+/* Features Section */
+.feature-card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--medical-blue);
+}
+
+/* Symptoms Form */
+.symptoms-form {
+    background-color: var(--bs-body-bg);
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.form-floating textarea.form-control {
+    height: 200px;
+}
+
+#char-counter {
+    font-size: 0.8rem;
+    color: var(--bs-secondary);
+}
+
+/* Risk Levels */
+.risk-level {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+}
+
+.risk-level[data-risk="high"] {
+    background-color: var(--medical-red);
+    color: var(--medical-white);
+}
+
+.risk-level[data-risk="moderate"] {
+    background-color: var(--medical-yellow);
+    color: var(--medical-dark-blue);
+}
+
+.risk-level[data-risk="low"] {
+    background-color: var(--medical-green);
+    color: var(--medical-white);
+}
+
+/* Diagnosis Results */
+.diagnosis-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.diagnosis-header {
+    background: linear-gradient(to right, var(--medical-dark-blue), var(--medical-blue));
+    color: var(--medical-white);
+    padding: 1.5rem;
+}
+
+.symptom-badge {
+    background-color: var(--medical-light-blue);
+    color: var(--medical-dark-blue);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+/* Chatbot Styles */
+.chat-container {
+    height: 500px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    background: linear-gradient(to right, var(--medical-dark-blue), var(--medical-blue));
+    color: var(--medical-white);
+    padding: 1rem;
+}
+
+.chat-messages {
+    height: 350px;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: var(--bs-body-bg);
+}
+
+.message {
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: var(--medical-light-blue);
+    margin-left: auto;
+    border-top-right-radius: 0;
+}
+
+.bot-message {
+    background-color: var(--bs-secondary-bg);
+    margin-right: auto;
+    border-top-left-radius: 0;
+}
+
+.chat-input {
+    padding: 1rem;
+    background-color: var(--bs-body-bg);
+    border-top: 1px solid var(--bs-border-color);
+}
+
+/* Thinking dots animation */
+.thinking-dots {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+    background-color: var(--bs-secondary);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--bs-secondary-bg);
+    color: var(--bs-secondary-color);
+    padding: 2rem 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .message {
+        max-width: 90%;
+    }
+    
+    .symptoms-form {
+        padding: 1rem;
+    }
+}

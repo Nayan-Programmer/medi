@@ -1,0 +1,160 @@
+{% extends 'layout.html' %}
+
+{% block title %}MediDiagnose - AI-Powered Disease Diagnosis{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3">AI-Powered Disease Diagnosis</h1>
+                <p class="lead mb-4">Get instant insights about potential health conditions based on your symptoms. Our advanced AI analyzes patterns to help you understand your health better.</p>
+                <div class="d-grid gap-2 d-md-flex">
+                    <a href="#diagnosis-section" class="btn btn-light btn-lg px-4 me-md-2">Start Diagnosis</a>
+                    <a href="/about" class="btn btn-outline-light btn-lg px-4">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <svg class="hero-img" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3498db" />
+                            <stop offset="100%" stop-color="#2ecc71" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="250" cy="200" r="150" fill="none" stroke="url(#gradient)" stroke-width="5" />
+                    <path d="M250,50 L250,350 M100,200 L400,200" stroke="white" stroke-width="5" />
+                    <circle cx="250" cy="200" r="100" fill="none" stroke="#3498db" stroke-width="3" stroke-dasharray="10 5" />
+                    <circle cx="250" cy="200" r="50" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="2" />
+                    <text x="250" y="205" font-size="20" text-anchor="middle" fill="white">AI DIAGNOSIS</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features Section -->
+<section class="container py-5">
+    <h2 class="text-center mb-5">Key Features</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-clipboard2-pulse feature-icon mb-3"></i>
+                    <h5 class="card-title">Symptom Analysis</h5>
+                    <p class="card-text">Our AI interprets your symptoms using natural language processing and matches them with potential conditions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-bar-chart feature-icon mb-3"></i>
+                    <h5 class="card-title">Risk Assessment</h5>
+                    <p class="card-text">Receive a personalized risk level assessment categorized as low, moderate, or high based on your symptoms.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-robot feature-icon mb-3"></i>
+                    <h5 class="card-title">Health Assistant</h5>
+                    <p class="card-text">Interact with our AI health assistant to get answers to common medical questions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Diagnosis Section -->
+<section id="diagnosis-section" class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="symptoms-form">
+                <h2 class="text-center mb-4">Describe Your Symptoms</h2>
+                <p class="text-center mb-4">Our AI will analyze your symptoms and suggest possible health conditions. Please be as detailed as possible.</p>
+                
+                <form action="/diagnose" method="post">
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="symptoms-textarea" name="symptoms" placeholder="Describe your symptoms here" style="height: 200px" required></textarea>
+                        <label for="symptoms-textarea">Describe your symptoms here</label>
+                        <div id="char-counter" class="form-text text-end">1000 characters remaining</div>
+                    </div>
+                    
+                    <div class="form-text mb-4">
+                        <i class="bi bi-info-circle-fill me-1"></i> Example: "I have been experiencing headache, fever, and sore throat for the past 3 days. I also feel very tired."
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-search me-2"></i>Analyze Symptoms
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-4">
+                    <div class="alert alert-info">
+                        <h5 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Important Disclaimer</h5>
+                        <p>This AI-powered tool is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="bg-body-secondary py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <h3 class="mb-0">1</h3>
+                        </div>
+                        <h5 class="card-title">Input Symptoms</h5>
+                        <p class="card-text">Describe your symptoms in detail using our easy form.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <h3 class="mb-0">2</h3>
+                        </div>
+                        <h5 class="card-title">AI Analysis</h5>
+                        <p class="card-text">Our advanced AI processes your symptoms and matches with medical data.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <h3 class="mb-0">3</h3>
+                        </div>
+                        <h5 class="card-title">Get Results</h5>
+                        <p class="card-text">Receive potential diagnoses and risk assessments based on your input.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <h3 class="mb-0">4</h3>
+                        </div>
+                        <h5 class="card-title">Take Action</h5>
+                        <p class="card-text">Follow our recommendations on next steps for your health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
